@@ -8,13 +8,21 @@
 <body>
     <h1>List of Users</h1>
     <ol>
-        
         {% for user in users %}
         <li>
-            <p>title: {{user.title}} </p>
-            <p>description: {{user.description}}</p>
+            <p>title: {{ user.title }} </p>
+            <p>description: {{ user.description }}</p>
+            <form action="/delete/{{ user.id }}" method="POST">
+                <button type="submit">Delete Item</button>
+            </form>
+            <form action="/update/{{ user.id }}" method="POST">
+                <input type="text" name="new_title">   
+                <input type="text" name="new_description">  
+                <button type="submit">Update Item</button>
+            </form>
         </li>
-        {% endfor %}
+    {% endfor %}
+    
     </ol>
 
     <p>
