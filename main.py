@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password123@localhost/users'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URI")
 # mysql://username:password@host:port/database_name
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
